@@ -1,0 +1,15 @@
+diff --git a/node_modules/@brillout/vite-plugin-import-build/dist/loadServerBuild/index.js b/node_modules/@brillout/vite-plugin-import-build/dist/loadServerBuild/index.js
+index 92a3fde..2539728 100644
+--- a/node_modules/@brillout/vite-plugin-import-build/dist/loadServerBuild/index.js
++++ b/node_modules/@brillout/vite-plugin-import-build/dist/loadServerBuild/index.js
+@@ -18,7 +18,9 @@ async function loadServerBuild() {
+         catch (err) {
+             requireError = err;
+         }
+-        if (isImportBuildOutsideOfCwd(importer.paths)) {
++        if (process.env.NODE_ENV === 'production') {
++            // nothing
++        } else if (isImportBuildOutsideOfCwd(importer.paths)) {
+             success = false;
+         }
+     }
